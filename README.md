@@ -259,7 +259,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ### 🚀 什么是智能模型路由？
 
-智能模��路由是一个 **OpenClaw 插件**，可以根据以下因素自动为您的任务选择最佳 AI 模型：
+智能模型路由是一个 **OpenClaw 插件**，可以根据以下因素自动为您的任务选择最佳 AI 模型：
 
 - **任务类型** — 代码生成？使用 Claude Sonnet。简单问答？使用 GPT-4o-mini。
 - **成本** — 在质量差异最小的情况下，通过路由到更便宜的模型节省高达 90% 的成本
