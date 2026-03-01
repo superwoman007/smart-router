@@ -1,0 +1,40 @@
+{
+  "name": "@openclaw/smart-model-router",
+  "version": "1.0.0",
+  "description": "Intelligently route AI requests to optimal models based on task type, cost, speed, and quality",
+  "main": "index.ts",
+  "type": "module",
+  "keywords": [
+    "openclaw",
+    "openclaw-plugin",
+    "ai",
+    "model-router",
+    "llm",
+    "cost-optimization",
+    "intelligent-routing"
+  ],
+  "author": "OpenClaw Team",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/superwoman007/smart-router.git"
+  },
+  "bugs": {
+    "url": "https://github.com/superwoman007/smart-router/issues"
+  },
+  "homepage": "https://github.com/superwoman007/smart-router#readme",
+  "peerDependencies": {
+    "openclaw": ">=2026.1.0"
+  },
+  "dependencies": {
+    "better-sqlite3": "^11.0.0"
+  },
+  "devDependencies": {
+    "@types/better-sqlite3": "^7.6.11",
+    "@types/node": "^20.0.0",
+    "typescript": "^5.0.0"
+  },
+  "openclaw": {
+    "extensions": ["./index.ts"]
+  }
+}

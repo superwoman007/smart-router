@@ -1,0 +1,63 @@
+{
+  "id": "smart-model-router",
+  "name": "Smart Model Router",
+  "description": "Intelligently route AI requests to the optimal model based on task type, cost, speed, and quality preferences",
+  "version": "1.0.0",
+  "configSchema": {
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+      "defaultStrategy": {
+        "type": "string",
+        "enum": ["cost", "speed", "quality", "balanced"],
+        "default": "balanced"
+      },
+      "enableLogging": {
+        "type": "boolean",
+        "default": true
+      },
+      "enableFallback": {
+        "type": "boolean",
+        "default": true
+      },
+      "models": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["name", "provider"],
+          "properties": {
+            "name": { "type": "string" },
+            "provider": { "type": "string" },
+            "costPer1kTokens": { "type": "number" },
+            "avgLatencyMs": { "type": "number" },
+            "qualityScore": { "type": "number" },
+            "enabled": { "type": "boolean", "default": true }
+          }
+        }
+      },
+      "taskRules": {
+        "type": "object",
+        "description": "Custom task type to model mapping",
+        "additionalProperties": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    }
+  },
+  "uiHints": {
+    "defaultStrategy": {
+      "label": "Default Routing Strategy",
+      "description": "cost = cheapest model, speed = fastest, quality = best output, balanced = smart mix"
+    },
+    "enableLogging": {
+      "label": "Enable Routing Logs",
+      "description": "Record all routing decisions for analytics and optimization"
+    },
+    "enableFallback": {
+      "label": "Enable Auto Fallback",
+      "description": "Automatically switch to backup model if primary model fails"
+    }
+  }
+}
