@@ -464,4 +464,4 @@ $ openclaw smart-router stats
 
 **⭐ If you find this plugin useful, please give it a star!**
 
-**⭐ 如果您觉得这个插��有用，请给它一个星标！**
+**⭐ 如果您觉得这个插件有用，请给它一个星标！**
