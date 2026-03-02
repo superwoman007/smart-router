@@ -37,9 +37,15 @@ export function initStorage(dataDir: string): void {
 
     const dbPath = join(dataDir, 'smart-model-router.db');
     
-    // Dynamic import for better compatibility
-    const Database = require('better-sqlite3');
-    db = new Database(dbPath);
+    // Try to load better-sqlite3, but don't fail if not available
+    try {
+      const Database = require('better-sqlite3');
+      db = new Database(dbPath);
+    } catch (err) {
+      console.warn('[smart-model-router] better-sqlite3 not available, storage disabled');
+      db = null;
+      return;
+    }
 
     // Create tables
     db.exec(`
