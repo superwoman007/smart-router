@@ -11,9 +11,9 @@ const plugin = {
   description: "Intelligently route AI requests to optimal models based on task type, cost, speed, and quality",
 
   async register(api: OpenClawPluginApi) {
-    // Initialize storage
+    // Initialize storage (async)
     const dataDir = join(homedir(), '.openclaw', 'data');
-    initStorage(dataDir);
+    await initStorage(dataDir);
 
     // Register agent tools
     registerSmartRouterTools(api);

@@ -28,7 +28,7 @@ export interface RoutingStats {
 
 let db: any = null;
 
-export function initStorage(dataDir: string): void {
+export async function initStorage(dataDir: string): Promise<void> {
   try {
     // Ensure data directory exists
     if (!existsSync(dataDir)) {
@@ -37,9 +37,9 @@ export function initStorage(dataDir: string): void {
 
     const dbPath = join(dataDir, 'smart-model-router.db');
     
-    // Try to load better-sqlite3, but don't fail if not available
+    // Try to load better-sqlite3 via dynamic import (ESM compatible), but don't fail if not available
     try {
-      const Database = require('better-sqlite3');
+      const { default: Database } = await import('better-sqlite3');
       db = new Database(dbPath);
     } catch (err) {
       console.warn('[smart-model-router] better-sqlite3 not available, storage disabled');

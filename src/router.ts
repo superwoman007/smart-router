@@ -79,24 +79,24 @@ export class ModelRouter {
       candidateModels = availableModels;
     }
 
-    // Sort by strategy
+    // Sort by strategy (use spread to avoid mutating the original array)
     let sortedModels: Model[];
     switch (strategy) {
       case 'cost':
-        sortedModels = candidateModels.sort((a, b) => a.costPer1kTokens - b.costPer1kTokens);
+        sortedModels = [...candidateModels].sort((a, b) => a.costPer1kTokens - b.costPer1kTokens);
         break;
       case 'speed':
-        sortedModels = candidateModels.sort((a, b) => a.avgLatencyMs - b.avgLatencyMs);
+        sortedModels = [...candidateModels].sort((a, b) => a.avgLatencyMs - b.avgLatencyMs);
         break;
       case 'quality':
-        sortedModels = candidateModels.sort((a, b) => b.qualityScore - a.qualityScore);
+        sortedModels = [...candidateModels].sort((a, b) => b.qualityScore - a.qualityScore);
         break;
       case 'balanced':
         // Balanced: normalize and combine all factors
         sortedModels = this.balancedSort(candidateModels);
         break;
       default:
-        sortedModels = candidateModels;
+        sortedModels = [...candidateModels];
     }
 
     const selected = sortedModels[0];
